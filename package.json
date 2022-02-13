@@ -1,0 +1,19 @@
+{
+  "name": "barberia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "author": "Nicolas Joaquin Parisi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "express-validator": "^6.14.0",
+    "dotenv": "^12.0.4",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.16.1"
+  }
+}
