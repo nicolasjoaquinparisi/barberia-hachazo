@@ -1,30 +1,30 @@
 const Sequelize = require('sequelize')
 const sequelize = require('../utils/db')
 const { Model } = require('sequelize')
-const Persona = require('./Persona')
+const Person = require('./Person')
 
-class Barbero extends Model {}
+class Barber extends Model {}
 
-Barbero.init(
+Barber.init(
     {
-        codBarbero: {
+        id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             allowNull: false,
             primaryKey: true
         },
-        direccion: {
+        address: {
             type: Sequelize.STRING,
             allowNull: false
         }
     },
     {
         sequelize,
-        modelName: 'barbero'
+        modelName: 'barber'
     }
 )
 
-Barbero.belongsTo(Persona, { foreignKey: 'dni', targetKey: 'dni' })
-Persona.hasOne(Barbero, { foreignKey: 'dni' } )
+Barber.belongsTo(Person, { foreignKey: 'dni', targetKey: 'dni' })
+Person.hasOne(Barber, { foreignKey: 'dni' } )
 
-module.exports = Barbero
+module.exports = Barber

@@ -2,32 +2,32 @@ const { Model } = require('sequelize')
 const Sequelize = require('sequelize')
 const sequelize = require('../utils/db')
 
-class Persona extends Model {}
+class Person extends Model {}
 
-Persona.init(
+Person.init(
     {
         dni: {
             type: Sequelize.STRING,
             allowNull: false,
             primaryKey: true
         },
-        nombre: {
+        name: {
             type: Sequelize.STRING,
             allowNull: false,
         },
-        apellido: {
+        lastName: {
             type: Sequelize.STRING,
             allowNull: false,
         },
-        celular: {
+        phone: {
             type: Sequelize.STRING,
             allowNull: false
         }
     },
     {
         sequelize,
-        modelName: 'persona'
+        modelName: 'person'
     }
 )
 
-module.exports = Persona
+module.exports = Person

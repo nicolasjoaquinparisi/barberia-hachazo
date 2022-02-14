@@ -1,28 +1,28 @@
 const express = require("express")
 const sequelize = require('./utils/db')
 
-// Crear el server
+// Creating server
 const app = express()
 
-// Sincronización de los modelos con la Base de Datos
+// Sync with the DB models
 sequelize.sync()
 
-// Habilitar express.json
-// express.json permite leer datos que el usuario envie. Otra forma de hacerlo es con body parser
+// Enabling express.json
 app.use(express.json( {extended: true} ))
 
-// Puerto de la app
+// Setting up the App's PORT
 const PORT = process.env.PORT || 4000
 
-// Importar rutas
-app.use('/api/cliente', require('./routes/cliente'));
+// Paths
+app.use('/api/client', require('./routes/client'));
+app.use('/api/barber', require('./routes/barber'));
 
-// Página principal
+// Main page
 app.get('/', (req, res) => {
     res.send()
 })
 
-// Iniciar la app
+// Start App
 app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}...`)
 })

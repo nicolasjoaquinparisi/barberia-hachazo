@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize')
 
 const sequelize = new Sequelize(
-    'db_barberia',
+    'db_barbershop_hachazo',
     'root',
     'localhost',
     {
