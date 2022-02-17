@@ -9,7 +9,6 @@ Client.init(
     {
         id: {
             type: Sequelize.INTEGER,
-            allowNull: false,
             primaryKey: true,
             autoIncrement: true
         }
@@ -20,7 +19,7 @@ Client.init(
     }
 )
 
-Client.belongsTo(Person, { foreignKey: 'dni', targetKey: 'dni' })
-Person.hasOne(Client, { foreignKey: 'dni'} )
+Client.belongsTo(Person, { foreignKey: 'person_id', targetKey: 'id', onUpdate: 'cascade', onDelete: 'cascade' })
+Person.hasOne(Client, { foreignKey: 'id'} )
 
 module.exports = Client
