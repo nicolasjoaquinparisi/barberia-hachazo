@@ -10,7 +10,6 @@ Barber.init(
         id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
-            allowNull: false,
             primaryKey: true
         },
         address: {
@@ -24,7 +23,7 @@ Barber.init(
     }
 )
 
-Barber.belongsTo(Person, { foreignKey: 'dni', targetKey: 'dni' })
-Person.hasOne(Barber, { foreignKey: 'dni' } )
+Barber.belongsTo(Person, { foreignKey: 'person_id', targetKey: 'id', onUpdate: 'cascade', onDelete: 'cascade' })
+Person.hasOne(Barber, { foreignKey: 'id'} )
 
 module.exports = Barber

@@ -18,21 +18,26 @@ exports.createClient = async (req, res) => {
         // Se verifica si ya existe la persona.
         // Si un barbero quiere cortarse el pelo, entonces se verifica si ya existen sus datos personales
         const existsPerson = await Person.findOne({ where: { dni: dni} })
+
         if (existsPerson) {
-            
+
             const existClient = await Client.findOne({ where: { person_id: existsPerson.id } })
             if (existClient) {
-                res.status(400).send(`There is a client with DNI: ${existsPerson.dni}`)
+                return res.status(400).send(`There is a client with DNI: ${dni}`)
             }
-        }
 
-        const person = await Person.create({
-            name: name,
-            lastName: lastName,
-            dni: dni,
-            phone: phone
-        })
-        await Client.create({person_id: person.id})
+            await Client.create({person_id: existClient.id})
+        }
+        else {
+            const person = await Person.create({
+                name: name,
+                lastName: lastName,
+                dni: dni,
+                phone: phone
+            })
+
+            await Client.create({person_id: person.id})
+        }
 
         res.status(200).send(`New client added: ${lastName}, ${name}`)
 
@@ -134,8 +139,8 @@ exports.deleteClient = async (req, res) => {
             return res.status(404).send(`The person with id ${id} was not found`)
         }
 
-        await client.destroy()
         await person.destroy()
+        //await client.destroy()
 
         res.status(200).send('Client deleted')
 
