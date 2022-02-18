@@ -26,7 +26,7 @@ exports.createClient = async (req, res) => {
                 return res.status(400).send(`There is a client with DNI: ${dni}`)
             }
 
-            await Client.create({person_id: existClient.id})
+            await Client.create({person_id: existsPerson.id})
         }
         else {
             const person = await Person.create({
@@ -138,9 +138,8 @@ exports.deleteClient = async (req, res) => {
         if (!person) {
             return res.status(404).send(`The person with id ${id} was not found`)
         }
-
-        await person.destroy()
-        //await client.destroy()
+        
+        await client.destroy()
 
         res.status(200).send('Client deleted')
 

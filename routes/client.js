@@ -1,7 +1,8 @@
 const express = require('express')
-const router = express.Router()
 const { check } = require('express-validator')
 const clientController = require('../controller/clientController')
+
+const router = express.Router()
 
 // Path: api/client
 router.post('/',

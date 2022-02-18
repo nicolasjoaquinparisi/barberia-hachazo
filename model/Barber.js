@@ -23,7 +23,7 @@ Barber.init(
     }
 )
 
-Barber.belongsTo(Person, { foreignKey: 'person_id', targetKey: 'id', onUpdate: 'cascade', onDelete: 'cascade' })
+Barber.belongsTo(Person, { foreignKey: 'person_id', targetKey: 'id'})
 Person.hasOne(Barber, { foreignKey: 'id'} )
 
 module.exports = Barber

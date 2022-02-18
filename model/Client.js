@@ -19,7 +19,7 @@ Client.init(
     }
 )
 
-Client.belongsTo(Person, { foreignKey: 'person_id', targetKey: 'id', onUpdate: 'cascade', onDelete: 'cascade' })
+Client.belongsTo(Person, { foreignKey: 'person_id', targetKey: 'id' })
 Person.hasOne(Client, { foreignKey: 'id'} )
 
 module.exports = Client

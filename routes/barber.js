@@ -1,7 +1,8 @@
 const express = require('express')
-const router = express.Router()
 const { check } = require('express-validator')
 const barberController = require('../controller/barberController')
+
+const router = express.Router()
 
 // Path: api/barber
 router.post('/',
@@ -16,6 +17,8 @@ router.post('/',
 )
 
 router.get('/', barberController.getBarbers)
+
+router.get('/:id', barberController.getBarber)
 
 router.put('/:id',
     [
