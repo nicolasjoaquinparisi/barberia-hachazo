@@ -1,5 +1,7 @@
 const express = require("express")
 const sequelize = require('./utils/db')
+// const swaggerUi = require('swagger-ui-express')
+// const swaggerDocument = require('./swagger.json')
 
 // Creating server
 const app = express()
@@ -14,8 +16,10 @@ app.use(express.json( {extended: true} ))
 const PORT = process.env.PORT || 4000
 
 // Paths
-app.use('/api/client', require('./routes/client'));
-app.use('/api/barber', require('./routes/barber'));
+// app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api/client', require('./routes/client'))
+app.use('/api/barber', require('./routes/barber'))
+app.use('/api/service', require('./routes/service'))
 
 // Main page
 app.get('/', (req, res) => {

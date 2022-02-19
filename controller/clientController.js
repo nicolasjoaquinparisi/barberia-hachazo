@@ -1,6 +1,5 @@
 const Client = require('../model/Client')
 const Person = require('../model/Person')
-const Barber = require('../model/Barber')
 const { validationResult } = require('express-validator')
 
 exports.createClient = async (req, res) => {
@@ -12,8 +11,6 @@ exports.createClient = async (req, res) => {
 
     try {
         const { name, lastName, dni, phone } = req.body
-
-        console.error(`${name} ${lastName} ${dni} ${phone}`)
 
         // Se verifica si ya existe la persona.
         // Si un barbero quiere cortarse el pelo, entonces se verifica si ya existen sus datos personales
@@ -132,11 +129,6 @@ exports.deleteClient = async (req, res) => {
         const client = await Client.findByPk(id)
         if (!client) {
             return res.status(404).send(`The client with id ${id} was not found`)
-        }
-
-        const person = await Person.findByPk(client.person_id)
-        if (!person) {
-            return res.status(404).send(`The person with id ${id} was not found`)
         }
         
         await client.destroy()

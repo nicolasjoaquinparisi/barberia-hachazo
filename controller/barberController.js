@@ -140,11 +140,6 @@ exports.deleteBarber = async(req,res) => {
         if (!barber) {
             return res.status(404).send(`The barber with id ${id} was not found`)
         }
-
-        const person = await Person.findByPk(barber.person_id)
-        if (!person) {
-            return res.status(404).send(`The person with id ${id} was not found`)
-        }
         
         await barber.destroy()
 
