@@ -6,6 +6,12 @@ const sequelize = new Sequelize(
     'localhost',
     {
         dialect: 'mysql',
+        dialectOptions: {
+            useUTC: false,
+            dateStrings: true,
+            typeCast: true
+        },
+        timezone: '-03:00',
         host: 'localhost'
     }
 )

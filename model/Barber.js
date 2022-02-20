@@ -7,11 +7,6 @@ class Barber extends Model {}
 
 Barber.init(
     {
-        id: {
-            type: Sequelize.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
         address: {
             type: Sequelize.STRING,
             allowNull: false
@@ -19,6 +14,7 @@ Barber.init(
     },
     {
         sequelize,
+        timestamps: false,
         modelName: 'barber'
     }
 )

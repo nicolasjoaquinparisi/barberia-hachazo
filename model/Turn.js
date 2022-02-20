@@ -9,29 +9,24 @@ class Turn extends Model {}
 
 Turn.init(
     {
-        id: {
-            type: Sequelize.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
         date: {
-            type: Sequelize.DATE,
-            allowNull: false
+            type: Sequelize.DATE
         }
     },
     {
         sequelize,
+        timestamps: false,
         modelName: 'turn'
     }
 )
 
 Turn.belongsTo(Client, { foreignKey: 'client_id', targetKey: 'id'})
-Client.hasMany(Turn, { foreignKey: 'id'})
+Client.hasMany(Turn, { foreignKey: 'client_id'})
 
 Turn.belongsTo(Barber, { foreignKey: 'barber_id', targetKey: 'id'})
-Barber.hasMany(Turn, { foreignKey: 'id'})
+Barber.hasMany(Turn, { foreignKey: 'barber_id'})
 
 Turn.belongsTo(Service, { foreignKey: 'service_id', targetKey: 'id'})
-Service.hasMany(Turn, { foreignKey: 'id'})
+Service.hasMany(Turn, { foreignKey: 'service_id'})
 
 module.exports = Turn

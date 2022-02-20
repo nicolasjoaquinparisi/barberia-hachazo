@@ -6,15 +6,10 @@ const Person = require('./Person')
 class Client extends Model {}
 
 Client.init(
-    {
-        id: {
-            type: Sequelize.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        }
-    },
+    {},
     {
         sequelize,
+        timestamps: false,
         modelName: 'client'
     }
 )

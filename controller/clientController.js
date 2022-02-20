@@ -46,11 +46,7 @@ exports.createClient = async (req, res) => {
 
 exports.getClients = async (req, res) => {
     try {
-        const clients = await Client.findAll({
-            attributes: { exclude: ['createdAt', 'updatedAt' ] },
-            include: { model: Person, attributes: { exclude: ['createdAt', 'updatedAt'] } }
-        })
-
+        const clients = await Client.findAll({ include: { model: Person, attributes: { exclude: ['createdAt', 'updatedAt'] } } })
         res.json({clients})
     } catch (error) {
         console.log(error)
@@ -63,10 +59,7 @@ exports.getClient = async (req, res) => {
         // Obtener id del cliente de los parámetros
         const idClient = req.params.id
 
-        const client = await Client.findByPk(idClient, {
-            attributes: { exclude: ['createdAt', 'updatedAt' ] },
-            include: { model: Person, attributes: { exclude: ['createdAt', 'updatedAt'] }}
-        })
+        const client = await Client.findByPk(idClient, { include: { model: Person, attributes: {exclude: ['createdAt', 'updatedAt']} } })
         
         if (!client) {
             return res.status(400).send(`Client with id ${idClient} not found`)

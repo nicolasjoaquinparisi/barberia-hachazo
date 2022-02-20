@@ -20,6 +20,7 @@ const PORT = process.env.PORT || 4000
 app.use('/api/client', require('./routes/client'))
 app.use('/api/barber', require('./routes/barber'))
 app.use('/api/service', require('./routes/service'))
+app.use('/api/turn', require('./routes/turn'))
 
 // Main page
 app.get('/', (req, res) => {

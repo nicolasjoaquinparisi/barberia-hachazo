@@ -6,11 +6,6 @@ class Service extends Model {}
 
 Service.init(
     {
-        id: {
-            type: Sequelize.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
         name: {
             type: Sequelize.STRING,
             unique: true,
@@ -23,6 +18,7 @@ Service.init(
     },
     {
         sequelize,
+        timestamps: false,
         modelName: 'service'
     }
 )

@@ -31,10 +31,7 @@ exports.createService = async (req, res) => {
 
 exports.getServices = async (req, res) => {
     try {
-        const services = await Service.findAll({
-            attributes: { exclude: ['createdAt', 'updatedAt'] }
-        })
-
+        const services = await Service.findAll()
         res.json({services})
     } catch (error) {
         console.log(error)
@@ -46,9 +43,7 @@ exports.getService = async (req, res) => {
     try {
         const id = req.params.id
 
-        const service = await Service.findByPk(id, {
-            attributes: { exclude: ['createdAt', 'updatedAt'] }
-        })
+        const service = await Service.findByPk(id)
 
         if (!service) {
             return res.status(400).send(`Service not found`)

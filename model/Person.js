@@ -6,11 +6,6 @@ class Person extends Model {}
 
 Person.init(
     {
-        id: {
-            type: Sequelize.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
         dni: {
             type: Sequelize.STRING,
             allowNull: false,
@@ -31,6 +26,7 @@ Person.init(
     },
     {
         sequelize,
+        timestamps: false,
         modelName: 'person'
     }
 )

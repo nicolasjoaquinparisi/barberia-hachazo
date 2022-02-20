@@ -51,11 +51,7 @@ exports.createBarber = async(req, res) => {
 
 exports.getBarbers = async (req, res) => {
     try {
-        const barbers = await Barber.findAll({
-            attributes: { exclude: ['createdAt', 'updatedAt' ] },
-            include: { model: Person, attributes: { exclude: ['createdAt', 'updatedAt'] } }
-        })
-
+        const barbers = await Barber.findAll({ include: { model: Person, attributes: { exclude: ['createdAt', 'updatedAt'] } } })
         res.json({barbers})
     } catch (error) {
         console.log(error)
@@ -68,10 +64,7 @@ exports.getBarber = async (req, res) => {
         // Obtener id del barbero de los parámetros
         const id = req.params.id
 
-        const barber = await Barber.findByPk(id, {
-            attributes: { exclude: ['createdAt', 'updatedAt' ] },
-            include: { model: Person, attributes: { exclude: ['createdAt', 'updatedAt'] }}
-        })
+        const barber = await Barber.findByPk(id, { include: { model: Person, attributes: { exclude: ['createdAt', 'updatedAt'] } } })
         
         if (!barber) {
             return res.status(400).send(`Barber with id ${id} not found`)
